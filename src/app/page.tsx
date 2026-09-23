@@ -1,36 +1,47 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { client } from "@/lib/sanity";
 
-export const revalidate = 60; // Revalidate every minute
+export default function Home() {
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-async function getData() {
-  try {
-    const data = await client.fetch(`{
-      "siteSettings": *[_type == "siteSettings"][0],
-      "homePage": *[_type == "homePage"][0],
-      "founder": *[_type == "founder"][0],
-      "services": *[_type == "service"] | order(order asc),
-      "packages": *[_type == "package"] | order(order asc),
-      "testimonials": *[_type == "testimonial"] | order(order asc)
-    }`);
-    return data;
-  } catch (error) {
-    return null;
-  }
-}
+  useEffect(() => {
+    async function getData() {
+      try {
+        const result = await client.fetch(`{
+          "siteSettings": *[_type == "siteSettings"][0],
+          "homePage": *[_type == "homePage"][0],
+          "founder": *[_type == "founder"][0],
+          "services": *[_type == "service"] | order(order asc),
+          "packages": *[_type == "package"] | order(order asc),
+          "testimonials": *[_type == "testimonial"] | order(order asc)
+        }`);
+        setData(result);
+      } catch (error) {
+        console.error("Sanity fetch error:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData();
+  }, []);
 
-export default async function Home() {
-  const data = await getData();
+  const basePath = '/Dr.-T-R-Nisar-Ahamed';
 
-  // Fallback data in case Sanity isn't populated yet
   const packages = data?.packages?.length ? data.packages : [
-    { name: "Package 1", image: "/assets/Mentoria1.png" },
-    { name: "Package 2", image: "/assets/Mentoria2.png" },
-    { name: "Package 3", image: "/assets/Mentoria3.png" },
-    { name: "Package 4", image: "/assets/Mentoria4.png" },
-    { name: "Package 5", image: "/assets/Mentoria5.png" },
-    { name: "Package 6", image: "/assets/Mentoria6.png" },
+    { name: "Package 1", image: `${basePath}/assets/Mentoria1.png` },
+    { name: "Package 2", image: `${basePath}/assets/Mentoria2.png` },
+    { name: "Package 3", image: `${basePath}/assets/Mentoria3.png` },
+    { name: "Package 4", image: `${basePath}/assets/Mentoria4.png` },
+    { name: "Package 5", image: `${basePath}/assets/Mentoria5.png` },
+    { name: "Package 6", image: `${basePath}/assets/Mentoria6.png` },
   ];
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center">
@@ -96,11 +107,11 @@ export default async function Home() {
             {packages.map((pkg: any, i: number) => (
               <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col transition hover:-translate-y-1 hover:shadow-xl">
                 <div className="h-64 relative w-full bg-gray-100">
-                  <Image 
+                  {/* Using regular img for external Sanity images or fixed local paths */}
+                  <img 
                     src={pkg.image}
                     alt={pkg.name || `Package ${i+1}`}
-                    fill
-                    className="object-contain"
+                    className="w-full h-full object-contain"
                   />
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between">

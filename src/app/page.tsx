@@ -100,32 +100,54 @@ export default function Home() {
       {/* Mentoria Packages */}
       <section id="packages" className="w-full py-24 px-4">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold mb-4 text-center text-gray-900">Mentoria Packages</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Choose the perfect package for your journey.</p>
+          <h2 className="text-3xl font-bold mb-4 text-center text-gray-900">Mentoria's Plans</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Customise Your Mentorship Plan</p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {packages.map((pkg: any, i: number) => (
-              <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col transition hover:-translate-y-1 hover:shadow-xl">
-                <div className="h-64 relative w-full bg-gray-100">
-                  {/* Using regular img for external Sanity images or fixed local paths */}
-                  <img 
-                    src={pkg.image}
-                    alt={pkg.name || `Package ${i+1}`}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">{pkg.name}</h3>
-                    {pkg.price && <p className="text-blue-600 font-bold mb-4">{pkg.price}</p>}
-                    <p className="text-gray-600 text-sm mb-4">{pkg.description || "Unlock premium insights and guided mentoring."}</p>
-                  </div>
-                  <button className="w-full py-3 bg-blue-50 text-blue-700 font-semibold rounded-lg hover:bg-blue-100 transition">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-            ))}
+          {/* Tabs */}
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            <button className="px-6 py-3 bg-blue-600 text-white font-bold rounded-md text-sm">8-9 STUDENTS</button>
+            <button className="px-6 py-3 bg-white text-blue-600 border border-gray-200 font-bold rounded-md text-sm hover:bg-blue-50">10-12 STUDENTS</button>
+            <button className="px-6 py-3 bg-white text-blue-600 border border-gray-200 font-bold rounded-md text-sm hover:bg-blue-50">COLLEGE GRADUATES</button>
+            <button className="px-6 py-3 bg-white text-blue-600 border border-gray-200 font-bold rounded-md text-sm hover:bg-blue-50">WORKING PROFESSIONALS</button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Standard Package */}
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col">
+              <div className="text-blue-400 text-sm font-semibold mb-2">STANDARD</div>
+              <h3 className="text-2xl font-bold text-blue-500 mb-2">Discover</h3>
+              <div className="text-3xl font-bold text-blue-500 mb-8">₹ 5,500</div>
+              
+              <ul className="space-y-4 flex-1 text-sm text-gray-600">
+                <li className="flex items-start gap-3"><span className="text-blue-500 font-bold">✓</span> Psychometric assessment to measure your interests</li>
+                <li className="flex items-start gap-3"><span className="text-blue-500 font-bold">✓</span> 1 career counselling session with Mentoria's expert career coaches</li>
+                <li className="flex items-start gap-3"><span className="text-blue-500 font-bold">✓</span> Lifetime access to Knowledge Gateway</li>
+                <li className="flex items-start gap-3"><span className="text-blue-500 font-bold">✓</span> Invites to live webinars by industry experts</li>
+                <li className="flex items-start gap-3 text-gray-400 line-through"><span className="text-purple-400 font-bold">✗</span> Customised reports after each session with education pathways</li>
+                <li className="flex items-start gap-3 text-gray-400 line-through"><span className="text-purple-400 font-bold">✗</span> Guidance on studying abroad</li>
+                <li className="flex items-start gap-3 text-gray-400 line-through"><span className="text-purple-400 font-bold">✗</span> CV building during internships/graduation</li>
+              </ul>
+              <button className="w-full mt-8 py-3 bg-blue-400 text-white font-bold rounded-full hover:bg-blue-500 transition">BUY NOW</button>
+            </div>
+
+            {/* Premium Package */}
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-16 h-16 bg-pink-500 rounded-bl-full -mr-2 -mt-2"></div>
+              <div className="text-blue-400 text-sm font-semibold mb-2">PREMIUM</div>
+              <h3 className="text-2xl font-bold text-blue-600 mb-2">Discover plus+</h3>
+              <div className="text-3xl font-bold text-blue-600 mb-8">₹ 15,000</div>
+              
+              <ul className="space-y-4 flex-1 text-sm text-gray-600">
+                <li className="flex items-start gap-3"><span className="text-blue-600 font-bold">✓</span> Psychometric assessments to measure your interests, personality and abilities</li>
+                <li className="flex items-start gap-3"><span className="text-blue-600 font-bold">✓</span> 8 career counselling sessions (1 every year) with Mentoria's expert career coaches until graduation</li>
+                <li className="flex items-start gap-3"><span className="text-blue-600 font-bold">✓</span> Lifetime access to Knowledge Gateway</li>
+                <li className="flex items-start gap-3"><span className="text-blue-600 font-bold">✓</span> Invites to live webinars by industry experts</li>
+                <li className="flex items-start gap-3"><span className="text-blue-600 font-bold">✓</span> Customised reports after each session with education pathways</li>
+                <li className="flex items-start gap-3"><span className="text-blue-600 font-bold">✓</span> Guidance on studying abroad</li>
+                <li className="flex items-start gap-3"><span className="text-blue-600 font-bold">✓</span> CV building during internships/graduation</li>
+              </ul>
+              <button className="w-full mt-8 py-3 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition">BUY NOW</button>
+            </div>
           </div>
         </div>
       </section>

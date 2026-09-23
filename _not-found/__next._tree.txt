@@ -1,2 +1,3 @@
-:HL["/Dr.-T-R-Nisar-Ahamed/_next/static/chunks/32re5vizev2_6.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"nUCR2LWATql2DO2dJUs5u"}
+:HL["/Dr.-T-R-Nisar-Ahamed/_next/static/chunks/0372uubalsmzp.css","style"]
+:HL["/Dr.-T-R-Nisar-Ahamed/assets/logo.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"Twg-Ju0O2lz9nIphpYuCv"}

@@ -31,13 +31,11 @@ function Navbar() {
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <a href="#home" className="flex items-center">
-          <object 
-            data={`${basePath}/assets/logo.pdf#toolbar=0&navpanes=0&scrollbar=0`} 
-            type="application/pdf" 
-            className="h-12 w-48 pointer-events-none"
-          >
-            <div className="font-bold text-xl text-blue-600">ElevateNext</div>
-          </object>
+          <img 
+            src={`${basePath}/assets/logo.png`} 
+            alt="ElevateNext Logo" 
+            className="h-16 w-auto object-contain"
+          />
         </a>
         <div className="hidden md:flex space-x-6 text-gray-600 items-center">
           <a href="#home" className="hover:text-blue-600 transition">Home</a>

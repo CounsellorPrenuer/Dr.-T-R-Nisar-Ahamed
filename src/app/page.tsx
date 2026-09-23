@@ -6,6 +6,7 @@ import { client } from "@/lib/sanity";
 export default function Home() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("8-9 STUDENTS");
 
   useEffect(() => {
     async function getData() {
@@ -105,13 +106,22 @@ export default function Home() {
           
           {/* Tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
-            <button className="px-6 py-3 bg-blue-600 text-white font-bold rounded-md text-sm">8-9 STUDENTS</button>
-            <button className="px-6 py-3 bg-white text-blue-600 border border-gray-200 font-bold rounded-md text-sm hover:bg-blue-50">10-12 STUDENTS</button>
-            <button className="px-6 py-3 bg-white text-blue-600 border border-gray-200 font-bold rounded-md text-sm hover:bg-blue-50">COLLEGE GRADUATES</button>
-            <button className="px-6 py-3 bg-white text-blue-600 border border-gray-200 font-bold rounded-md text-sm hover:bg-blue-50">WORKING PROFESSIONALS</button>
+            {["8-9 STUDENTS", "10-12 STUDENTS", "COLLEGE GRADUATES", "WORKING PROFESSIONALS"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-6 py-3 font-bold rounded-md text-sm transition ${
+                  activeTab === tab
+                    ? "bg-blue-600 text-white"
+                    : "bg-white text-blue-600 border border-gray-200 hover:bg-blue-50"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Standard Package */}
             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col">
               <div className="text-blue-400 text-sm font-semibold mb-2">STANDARD</div>
@@ -147,6 +157,23 @@ export default function Home() {
                 <li className="flex items-start gap-3"><span className="text-blue-600 font-bold">✓</span> CV building during internships/graduation</li>
               </ul>
               <button className="w-full mt-8 py-3 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition">BUY NOW</button>
+            </div>
+
+            {/* Customisable Plan */}
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col">
+              <div className="text-blue-400 text-sm font-semibold mb-2">CUSTOMISABLE</div>
+              <h3 className="text-2xl font-bold text-blue-700 mb-2">Build Your Own</h3>
+              <div className="text-3xl font-bold text-blue-700 mb-8">Contact Us</div>
+              
+              <ul className="space-y-4 flex-1 text-sm text-gray-600">
+                <li className="flex items-start gap-3"><span className="text-blue-700 font-bold">✓</span> Tailor your own mentoring sessions</li>
+                <li className="flex items-start gap-3"><span className="text-blue-700 font-bold">✓</span> Choose specific topics you need help with</li>
+                <li className="flex items-start gap-3"><span className="text-blue-700 font-bold">✓</span> Flexible scheduling</li>
+                <li className="flex items-start gap-3"><span className="text-blue-700 font-bold">✓</span> Specialized expert guidance</li>
+                <li className="flex items-start gap-3"><span className="text-blue-700 font-bold">✓</span> One-on-one personalized attention</li>
+                <li className="flex items-start gap-3"><span className="text-blue-700 font-bold">✓</span> Build a unique roadmap for your career</li>
+              </ul>
+              <a href="#contact" className="block text-center w-full mt-8 py-3 bg-blue-700 text-white font-bold rounded-full hover:bg-blue-800 transition">INQUIRE NOW</a>
             </div>
           </div>
         </div>

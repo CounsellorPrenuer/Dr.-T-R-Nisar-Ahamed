@@ -2,10 +2,15 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/Dr.-T-R-Nisar-Ahamed',
   images: {
     unoptimized: true,
   },
+  experimental: {
+    turbopack: {
+      // Just specify the current directory
+      root: "C:/Users/Mihika/OneDrive/Desktop/Internship/Dr. T R Nisar Ahamed",
+    }
+  }
 };
 
 export default nextConfig;

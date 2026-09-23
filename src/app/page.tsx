@@ -252,9 +252,6 @@ export default function Home() {
                   { title: "Career Report + Career Counselling", price: "₹4000", desc: "Connect with India's top career coaches to analyse your psychometric report, get a detailed action plan for your development areas and shortlist the top three career paths you're most likely to enjoy and excel at." }
                 ].map((item, idx) => (
                   <div key={idx} className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col items-start hover:shadow-lg transition">
-                    <div className="w-full h-48 bg-gray-100 rounded-md mb-6 flex items-center justify-center text-gray-400">
-                      Icon
-                    </div>
                     <h4 className="text-lg font-bold text-gray-800">{item.title}</h4>
                     <div className="text-blue-600 font-bold mb-3">{item.price}</div>
                     <p className="text-sm text-gray-600 mb-6 flex-1">{item.desc}</p>
